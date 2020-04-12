@@ -1,0 +1,19 @@
+{
+  "name": "sinbot",
+  "version": "1.0.0",
+  "description": "Discord bot for sinners",
+  "main": "SinBot",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Miciaha I",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/opus": "^0.1.0",
+    "body-parser": "^1.19.0",
+    "discord.js": "^12.1.1",
+    "express": "^4.17.1",
+    "sequelize": "^5.21.6",
+    "sqlite3": "^4.1.1"
+  }
+}

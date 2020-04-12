@@ -1,0 +1,16 @@
+{
+  "users": {
+    "241993927580844033": {
+      "sins": "1"
+    },
+    "10": {
+      "sins": "0"
+    }
+  },
+
+  "sinCountOpeners": {
+    "0": "The people have spoken! ",
+    "1": "According to their guildies, ",
+    "2": "Hmmm, looks like "
+  }
+}
