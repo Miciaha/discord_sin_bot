@@ -1,6 +1,6 @@
 const fs = require("fs");
 const Discord = require("discord.js");
-const { token } = require("./config.json");
+require('dotenv').config();
 const db = require("./db.js");
 
 const client = new Discord.Client();
@@ -18,19 +18,14 @@ for (const file of commandFiles) {
 
 
 client.once("ready", () => {
-  db.sinners.sync();
-  db.records.sync();
+  //db.sinners.sync();
+  //db.records.sync();
 
   console.log("Ready!");
 });
 
-try {
-  client.login(process.env.BOT_TOKEN);
-} catch (error) {
-  console.log("Must be local...");
+client.login(process.env.BOT_TOKEN);
 
-  client.login(token);
-}
 
 client.on("message", (message) => {
   if (!message.content.startsWith("$") || message.author.bot) return;
