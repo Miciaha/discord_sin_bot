@@ -1,6 +1,6 @@
 const fs = require("fs");
 const Discord = require("discord.js");
-const { prefix, token } = require("./config.json");
+const { token } = require("./config.json");
 const db = require("./db.js");
 
 const client = new Discord.Client();
@@ -24,10 +24,16 @@ client.once("ready", () => {
   console.log("Ready!");
 });
 
-client.login(token);
+try {
+  client.login(process.env.BOT_TOKEN);
+} catch (error) {
+  console.log("Must be local...");
+
+  client.login(token);
+}
 
 client.on("message", (message) => {
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
+  if (!message.content.startsWith("$") || message.author.bot) return;
 
   const withoutPrefix = message.content.replace("$", "");
   const split = withoutPrefix.split(" ");
