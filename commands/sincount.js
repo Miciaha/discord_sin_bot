@@ -1,4 +1,4 @@
-const { users } = require("./../sinners.json");
+const db = require("../db.js");
 
 module.exports = {
   name: "sincount",
@@ -6,7 +6,7 @@ module.exports = {
   args: true,
   aliases: ["sc", "SC", "Sc", "Sincount", "Sin count"],
   description: "Returns number of sins a user has committed.",
-  execute(message, args) {
+  async  execute(message, args) {
     //check if the user is registered in the sin counter repo
     //If not, add them to the database and initialize their counter to 0
 
@@ -24,21 +24,22 @@ module.exports = {
 
       console.log(mention);
 
-      if (users[mention]) {
-        if (users[mention]["sins"] === "1") {
+      try {
+        const sinner = await db.sinners.findOne({ where: { discord_id: mention } });
+        var sins = sinner.sin_count;
+
+        if (sins === 1) {
           message.channel.send(
-            `${userName} has sinned ${users[mention]["sins"]} time`
+            `${userName} has sinned ${sins} time`
           );
         } else {
           message.channel.send(
-            `The people have spoken. ${userName} has sinned ${users[mention]["sins"]} times`
+            `${userName} has sinned ${sins} times`
           );
         }
-      } else {
+      } catch (error) {
         message.channel.send(`WHOA! ${userName} has NEVER sinned`);
       }
-    } else {
-      message.channel.send(`You didn't tag a user ${message.author}`);
     }
-  },
+  }
 };

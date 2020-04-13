@@ -1,7 +1,7 @@
 const fs = require("fs");
 const Discord = require("discord.js");
 const { prefix, token } = require("./config.json");
-const Sequalize = require("sequelize");
+const db = require("./db.js");
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -16,44 +16,10 @@ for (const file of commandFiles) {
   client.commands.set(command.name, command);
 }
 
-const sequalize = new Sequalize("database", "user", "password", {
-  host: "localhost",
-  dialect: 'sqlite',
-  logging: false,
-  //SQLite only
-  storage: "database.sqlite",
-});
-
-const Sinners = sequalize.define("sinners", {
-  discord_id: {
-    type: Sequalize.STRING,
-    unique: true,
-    primaryKey: true,
-  },
-  sin_count: {
-    type: Sequalize.INTEGER,
-    defaultValue: 0,
-    allowNull: false,
-  },
-});
-
-const Sin_Records = sequalize.define("sin_records", {
-  id: {
-    type: Sequalize.INTEGER,
-    unique: true,
-    primaryKey: true,
-  },
-  description: {
-    type: Sequalize.TEXT,
-    defaultValue: null,
-  },
-});
-
-Sin_Records.belongsTo(Sinners);
 
 client.once("ready", () => {
-  Sinners.sync();
-  Sin_Records.sync();
+  db.sinners.sync();
+  db.records.sync();
 
   console.log("Ready!");
 });
@@ -67,8 +33,6 @@ client.on("message", (message) => {
   const split = withoutPrefix.split(" ");
   const commandName = split[0];
   const args = split.slice(1);
-
-  console.log(commandName);
 
   if (!client.commands.has(commandName)) return;
 
@@ -88,5 +52,3 @@ client.on("message", (message) => {
     message.author.id;
   }
 });
-
-var sinCount = 0;
