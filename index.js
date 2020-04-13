@@ -18,8 +18,8 @@ for (const file of commandFiles) {
 
 
 client.once("ready", () => {
-  //db.sinners.sync();
-  //db.records.sync();
+  db.sinners.sync();
+  db.records.sync();
 
   console.log("Ready!");
 });
