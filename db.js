@@ -1,4 +1,5 @@
 const Sequalize = require("sequelize");
+require('dotenv').config();
 
 var sequalize = null
 
