@@ -1,12 +1,24 @@
 const Sequalize = require("sequelize");
 
-const sequalize = new Sequalize("database", "user", "password", {
-    host: "localhost",
-    dialect: 'sqlite',
-    logging: false,
-    //SQLite only
-    storage: "database.sqlite",
-});
+var sequalize = null
+
+if(!process.env.DATABASE_URL){
+
+     sequalize = new Sequalize("database", "user", "password", {
+        host: "localhost",
+        dialect: 'sqlite',
+        logging: false,
+        //SQLite only
+        storage: "database.sqlite",
+    });
+} else {
+     sequalize = new Sequalize(process.env.DATABASE_URL, {
+        host: match[3],
+        dialect: 'postgres',
+        port: match[4],
+        logging: true,
+    });
+}
 
 const Sinners = sequalize.define("sinners", {
     discord_id: {
