@@ -14,9 +14,8 @@ if(!process.env.DATABASE_URL){
     });
 } else {
      sequalize = new Sequalize(process.env.DATABASE_URL, {
-        host: match[3],
+        protocol: 'postgres',
         dialect: 'postgres',
-        port: match[4],
         logging: true,
     });
 }
