@@ -16,7 +16,7 @@ if(!process.env.DATABASE_URL){
      sequalize = new Sequalize(process.env.DATABASE_URL, {
         protocol: 'postgres',
         dialect: 'postgres',
-        logging: true,
+        logging: false,
     });
 }
 
