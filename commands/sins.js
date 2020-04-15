@@ -5,7 +5,7 @@ module.exports = {
   usage: "<user>",
   args: true,
   aliases: ["history"],
-  description: "Returns number of sins a user has committed.",
+  description: "Returns list of sins a user has committed.",
   async execute(message, args) {
     //check if the user is registered in the sin counter repo
     //If not, add them to the database and initialize their counter to 0
