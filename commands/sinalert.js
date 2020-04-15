@@ -5,7 +5,7 @@ module.exports = {
     usage: "<user> <reason>",
     args: true,
     aliases: ["addSin", "newSin"],
-    description: "Returns number of sins a user has committed.",
+    description: "Adds users sin to the sin database",
     async execute(message, args) {
 
         var sinner, record, mention;
