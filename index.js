@@ -47,7 +47,7 @@ client.on("message", (message) => {
 
   if (command.args && !args.length) {
     return message.channel.send(
-      `You didn't provide any arguments, ${message.author}!`
+      `You didn't use the command correctly. Try '$help <command name>' for help, ${message.author}!`
     );
   }
 

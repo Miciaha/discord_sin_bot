@@ -7,13 +7,15 @@ module.exports = {
     const data = [];
     const { commands } = message.client;
 
-    if (!args.length) {
+    if (args[0]==null) {
       data.push("Here's a list of all my commands:");
       data.push(commands.map((command) => command.name).join(", "));
       data.push(
         `\nYou can send \`$help [command name]\` to get info on a specific command!`
       );
-    }
+      message.reply(`Check your DMs \:smirk:!`);
+      return message.author.send(data, {split: true});
+    }else{
 
     const name = args[0].toLowerCase();
     const command =
@@ -35,8 +37,6 @@ module.exports = {
 
     data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
 
-    message.channel.send(data, { split: true });
-
     return message.author
       .send(data, { split: true })
       .then(() => {
@@ -52,5 +52,6 @@ module.exports = {
           "Bro, I'm not able to slide in those DMs?! Do you have DMs disabled?"
         );
       });
+    }
   },
 };
