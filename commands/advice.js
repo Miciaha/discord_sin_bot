@@ -46,7 +46,9 @@ module.exports = {
       question.includes("where") ||
       question.includes("Where") ||
       question.includes("why") ||
-      question.includes("Why")
+      question.includes("Why") ||
+      question.includes("how") ||
+      question.includes("How")
     ) {
         return message.reply(" Uhm, I only answer yes/no questions...")
     }
@@ -74,9 +76,9 @@ module.exports = {
     var indifferentPhrases = {
       0: "Presumably",
       1: "Maybe...",
-      2: "IDK",
+      2: "Nope.",
       3: "Ever thought about just, like, answering your own damn questions?",
-      4: "Holyyy shit, yes, no, who cares! Such a boreee :rolling_eyes:",
+      4: "No.",
       5: "I guess...",
     };
 
