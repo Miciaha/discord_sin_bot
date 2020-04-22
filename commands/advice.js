@@ -53,6 +53,20 @@ module.exports = {
         return message.reply(" Uhm, I only answer yes/no questions...")
     }
 
+    if(!question.includes("?")){
+      var quips = {
+        0: "I don't think that's a question",
+        1: "I don't feel like answering that",
+        2: "????",
+        3: "I can't advise you if you're not asking a question",
+        4: "Sir this is a Wendy's.",
+      }
+
+      var response = quips[Math.floor(Math.random() * 5)]
+
+      return message.reply(response)
+    }
+
     var result = sentiment.analyze(question, options);
 
     var phrases = {
