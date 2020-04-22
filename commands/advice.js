@@ -55,52 +55,39 @@ module.exports = {
 
     var result = sentiment.analyze(question, options);
 
-    var excitedPhrases = {
+    var phrases = {
       0: "YOU SPEAK MY FUCKING LANGUAGE! YES YES YES!",
       1: "Yes! And maybe marry me?!",
       2: "Of course, you brilliant, brilliant individual! :heart_eyes:",
       3: "Ahaha! Definitely!",
       4: "YEA YEA YEA YEA YEA!!!",
       5: "oH FOr sUrE BAbY!",
+      6: "Most definitely!",
+      7: "Why even ask when you know the answer is DUH!",
+      8: "Sounds good, yeah!",
+      9: "Dude, of course!",
+      10: "The cards say... yes.",
+      11: "As you have written, so it shall be :relieved:",
+      12: ":metal: Heck yes friendo :metal:",
+      13: "You betcha",
+      14: "Uh huh",
+      15: "Maybe...",
+      16: "Nope.",
+      17: "Ever thought about just, like, answering your own damn questions?",
+      18: "No.",
+      19: "I guess...",
+      20: "Yep",
+      21: "Sounds like a horrible idea",
+      22: "WHY WOULD I EVER SAY YES TO THIS?!",
+      23: "Definitely not...",
+      24: "Gross thing to ask, definitely not :middle_finger:",
+      25: "Nope",
+      26: "No.",
+      27: "Negative."
     };
 
-    var enablingPhrases = {
-      0: "Why even ask when you know the answer is DUH!",
-      1: "Sounds good, yeah!",
-      2: "Dude, of course!",
-      3: "The cards say... yes.",
-      4: "As you have written, so it shall be :relieved:",
-      5: ":metal: Heck yes friendo :metal:",
-    };
+    var phrase = Math.floor(Math.random() * 28 );
 
-    var indifferentPhrases = {
-      0: "Presumably",
-      1: "Maybe...",
-      2: "Nope.",
-      3: "Ever thought about just, like, answering your own damn questions?",
-      4: "No.",
-      5: "I guess...",
-    };
-
-    var disagreePhrases = {
-      0: "Sounds like a horrible idea",
-      1: "WHY WOULD I EVER SAY YES TO THIS?!",
-      2: "Definitely not...",
-      3: "Gross thing to ask, definitely not :middle_finger:",
-      4: "Nope",
-      5: "No.",
-    };
-
-    var phrase = Math.floor(Math.random() * 6);
-
-    if (result.score > 10) {
-      return message.reply(excitedPhrases[phrase]);
-    } else if (result.score > 3) {
-      return message.reply(enablingPhrases[phrase]);
-    } else if (result.score > -3) {
-      return message.reply(indifferentPhrases[phrase]);
-    } else {
-      return message.reply(disagreePhrases[phrase]);
-    }
+    return message.reply(phrases[phrase]);
   },
 };
