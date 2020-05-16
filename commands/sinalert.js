@@ -90,6 +90,10 @@ module.exports = {
                 //return message.reply('Something went wrong with adding a tag.');
             }
 
+        } else {
+            message.channel.send(
+                `${message.author} try using the command again with the format being <user> <reason>`
+            )
         }
     }
 };
