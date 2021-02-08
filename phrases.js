@@ -1,1 +1,0 @@
-var sinCountOpeners = ['The people have spoken! ', 'According to their guildies, ', 'Hmmm, looks like ' ]

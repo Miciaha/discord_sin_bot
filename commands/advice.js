@@ -1,38 +1,9 @@
-var Sentiment = require("sentiment");
-
 module.exports = {
   name: "advice",
   description: "Let the sin bot advise you. Ask yes/no questions",
   aliases: ["crystalball", "8ball", "shouldI"],
   usage: ["<question>"],
   execute(message, args) {
-    var sentiment = new Sentiment();
-
-    var options = {
-      extras: {
-        eat: 5,
-        alcohol: 7,
-        binge: 8,
-        drink: 7,
-        drunk: 9,
-        plastered: 10,
-        shit: 8,
-        hammered: 10,
-        exercise: -4,
-        meditate: -4,
-        patience: -5,
-        fun: 6,
-        read: -5,
-        fuck: 7,
-        damn: 5,
-        shit: 6,
-        games: 3,
-        video: 1,
-        bed: -4,
-        sleep: -6,
-        trashed: 8,
-      },
-    };
 
     var question = args.join(" ");
 
@@ -66,8 +37,6 @@ module.exports = {
 
       return message.reply(response)
     }
-
-    var result = sentiment.analyze(question, options);
 
     var phrases = {
       0: "YOU SPEAK MY FUCKING LANGUAGE! YES YES YES!",

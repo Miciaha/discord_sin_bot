@@ -3,9 +3,12 @@ const Discord = require("discord.js");
 require('dotenv').config();
 const db = require("./db.js");
 
+
+//Connect to Discord Client
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
+//Reads in commands in commands folder
 const commandFiles = fs
   .readdirSync("./commands")
   .filter((file) => file.endsWith(".js"));
@@ -16,10 +19,10 @@ for (const file of commandFiles) {
   client.commands.set(command.name, command);
 }
 
-
 client.once("ready", () => {
   db.sinners.sync();
   db.records.sync();
+  db.requests.sync();
 
   console.log("Ready!");
 });

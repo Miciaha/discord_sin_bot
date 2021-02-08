@@ -3,6 +3,7 @@ require('dotenv').config();
 
 var sequalize = null
 
+//sqlite default database for local testing
 if(!process.env.DATABASE_URL){
 
      sequalize = new Sequalize("database", "user", "password", {
@@ -20,6 +21,7 @@ if(!process.env.DATABASE_URL){
     });
 }
 
+//Database model definitions
 const Sinners = sequalize.define("sinners", {
     discord_id: {
         type: Sequalize.STRING,
@@ -55,8 +57,30 @@ const Sin_Records = sequalize.define("sin_records", {
     },
 });
 
+const Requests = sequalize.define("requests", {
+    id: {
+        type: Sequalize.INTEGER,
+        autoIncrement: true,
+        unique: true,
+        primaryKey: true,
+    },
+    user_id: {
+        type: Sequalize.STRING,
+        allowNull: false,
+    },
+    request: {
+        type: Sequalize.TEXT,
+        allowNull: false,
+    },
+    status: {
+        type: Sequalize.STRING,
+        defaultValue: "Not Accepted",
+    },
+});
+
 module.exports = {
     database : sequalize,
     sinners : Sinners,
     records : Sin_Records,
+    requests: Requests,
 };

@@ -34,6 +34,7 @@ module.exports = {
         }
       } catch (e) {
         console.log(e.message);
+        
         return message.channel.send(
           `${user.username} has no sins to be returned `
         );
