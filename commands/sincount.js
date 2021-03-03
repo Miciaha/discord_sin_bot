@@ -32,13 +32,20 @@ module.exports = {
           message.channel.send(
             `${userName} has sinned ${sins} time`
           );
-        } else {
+        }
+        else if (sins > 10){
+          message.channel.send(
+            `${userName} is a big time sinner with ${sins} sins`
+          );
+        }
+        else {
           message.channel.send(
             `${userName} has sinned ${sins} times`
           );
         }
       } catch (error) {
-        message.channel.send(`WHOA! ${userName} has NEVER sinned`);
+        console.log(error)
+        message.channel.send(`WTF? Please remove ${userName} from this server. They are literally without sin.`);
       }
     }
   }
