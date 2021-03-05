@@ -22,7 +22,6 @@ for (const file of commandFiles) {
 client.once("ready", () => {
   db.sinners.sync();
   db.records.sync();
-  db.requests.sync();
 
   console.log("Ready!");
 });

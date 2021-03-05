@@ -57,30 +57,8 @@ const Sin_Records = sequalize.define("sin_records", {
     },
 });
 
-const Requests = sequalize.define("requests", {
-    id: {
-        type: Sequalize.INTEGER,
-        autoIncrement: true,
-        unique: true,
-        primaryKey: true,
-    },
-    user_id: {
-        type: Sequalize.STRING,
-        allowNull: false,
-    },
-    request: {
-        type: Sequalize.TEXT,
-        allowNull: false,
-    },
-    status: {
-        type: Sequalize.STRING,
-        defaultValue: "Not Accepted",
-    },
-});
-
 module.exports = {
     database : sequalize,
     sinners : Sinners,
     records : Sin_Records,
-    requests: Requests,
 };
