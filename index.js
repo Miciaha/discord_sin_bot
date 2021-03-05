@@ -37,6 +37,8 @@ client.on("message", (message) => {
   const commandName = split[0];
   const args = split.slice(1);
 
+  console.log(process.env.DATABASE_URL);
+
   if (!client.commands.has(commandName)) return;
 
   const command = client.commands.get(commandName);
@@ -44,7 +46,7 @@ client.on("message", (message) => {
   if (command.args && !args.length) {
     return message.channel.send(
       `You didn't use the command correctly. Try '$help <command name>' for help, ${message.author}!`
-    );
+    );    
   }
 
   try {
