@@ -1,6 +1,6 @@
 module.exports = {
-  name: "phil",
-  description: "QUIT YOUR FUCKING JOB PHIL!",
+  name: "miciaha",
+  description: "Do better babe. Get out!",
   aliases: ["quit"],
   usage: [""],
   execute(message, args) {
