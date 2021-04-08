@@ -37,8 +37,6 @@ client.on("message", (message) => {
   const commandName = split[0];
   const args = split.slice(1);
 
-  console.log(process.env.DATABASE_URL);
-
   if (!client.commands.has(commandName)) return;
 
   const command = client.commands.get(commandName);
